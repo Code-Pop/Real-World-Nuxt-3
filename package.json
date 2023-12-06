@@ -7,12 +7,20 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "mock-api": "json-server db.json -p 3001"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@types/markdown-it": "^13.0.7",
+    "eslint": "^8.55.0",
+    "highlight.js": "^11.9.0",
+    "json-server": "^0.17.4",
     "nuxt": "^3.8.2",
+    "sass": "^1.69.5",
     "vue": "^3.3.8",
+    "vue-markdown-render": "^2.1.1",
     "vue-router": "^4.2.5"
   }
 }

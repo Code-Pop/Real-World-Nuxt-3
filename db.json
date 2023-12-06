@@ -1,0 +1,484 @@
+{
+  "post-details": [
+    {
+      "id": "nuxt-page",
+      "slug": "nuxt-page",
+      "categoryId": "components",
+      "title": "Rendering a Page",
+      "content": "You can render a Nuxt page by using the `<NuxtPage>` component.\n\nYou have to put it in the `app.vue` file:\n```html\n<template>\n  <div>\n    <NuxtPage />\n  </div>\n</template>\n```\n\nIt will be able to inspect the current path and render the corresponding page in your **pages** folder."
+    },
+    {
+      "id": "nuxt-layout",
+      "slug": "nuxt-layout",
+      "categoryId": "components",
+      "title": "Layout for the App",
+      "content": "You can set up a layout to be shared between the pages of your app.\n\nUse the `<NuxtLayout>` component in the **app.vue** file:\n```html\n<template>\n  <NuxtLayout>\n    <NuxtPage />\n  <NuxtLayout>\n</template>\n```\n\nThen it will find the component in **layouts/default.vue** and render that as the layout."
+    },
+    {
+      "id": "use-route",
+      "slug": "use-route",
+      "categoryId": "composables",
+      "title": "Getting the Current Path",
+      "content": "Use `useRoute` to get the path of the current page.\n```js\nconst route = useRoute()\nconsole.log(route.path)\n```"
+    },
+    {
+      "id": "use-router",
+      "slug": "use-router",
+      "categoryId": "composables",
+      "title": "Dynamic Page Transition",
+      "content": "Trigger a page transition dynamically with `useRouter`.\n```js\nconst router = useRouter()\n\nconst onClick = () => {\n  router.push({ path: '/new/path' })\n}\n```\n\nThis is an alternative to using `<NuxtLink>`."
+    },
+    {
+      "id": "use-fetch",
+      "slug": "use-fetch",
+      "categoryId": "composables",
+      "title": "Fetch data with useFetch",
+      "content": "You can fetch data from the server directly in the component.\n\nThe `useFetch` composable will make sure the same data don't have to be refetched again on the client side.\n```js\nconst { data } = await useFetch('/api/path')\n```"
+    },
+    {
+      "id": "use-async-data",
+      "slug": "use-async-data",
+      "categoryId": "composables",
+      "title": "Fetch data with custom logic",
+      "content": "If you have custom fetching logic, you can wrap the logic inside `useAsyncData`.\n\nJust like `useFetch`, `useAsyncData` will make sure the same data don't have to be refetched again on the client side.\n```js\nconst { data } = await useAsyncData('post-list', () => {\n  return getPostList()\n})\n```\n\nUnlike `useFetch`, you need to provide a cache key (`post-list` in the above example)."
+    },
+    {
+      "id": "nuxt-link",
+      "slug": "nuxt-link",
+      "categoryId": "components",
+      "title": "The NuxtLink Component",
+      "content": "Use `<NuxtLink>` to create a link between two pages as in a single-page app.\n```html\n<NuxtLink to=\"/path\">\n  Click Here\n</NuxtLink>\n```\n\nThis navigation will take place entirely on the client side."
+    },
+    {
+      "id": "route-validation",
+      "slug": "route-validation",
+      "categoryId": "routing",
+      "title": "Route Validation",
+      "content": "Validation logic can be registered for a route via `definePageMeta`.\n```js\ndefinePageMeta({\n  validate: async (route) => {\n    // return true or false\n  }\n})\n```"
+    },
+    {
+      "id": "route-params",
+      "slug": "route-params",
+      "categoryId": "routing",
+      "title": "Getting Route Params",
+      "content": "The params of the route can be accessed through the `useRoute` composable.\n```js\nconst category = useRoute().params.category\n```"
+    },
+    {
+      "id": "use-state",
+      "slug": "use-state",
+      "categoryId": "composables",
+      "title": "The useState Composable",
+      "content": "You can init a state on the server side using `useState`.\n\nProvide a functon that returns the initial value for the state:\n```js\nconst state = useState(() => 'sample value')\n```\n\nThen this state will be available on the client side."
+    },
+    {
+      "id": "use-head",
+      "slug": "use-head",
+      "categoryId": "composables",
+      "title": "Setting <head> tags of a Page",
+      "content": "You can set `<title>`, `<meta>`, and `<link>` with the `useHead` composable.\n```js\nuseHead({\n  title: 'Home',\n  meta: [\n    { name: 'description', content: 'A Nuxt Site' }\n  ],\n  link: [\n    { rel: 'stylesheet', href: 'style/url' }\n  ]\n})\n```"
+    },
+    {
+      "id": "client-only",
+      "slug": "client-only",
+      "categoryId": "components",
+      "title": "Render part of the page only on the client",
+      "content": "You can opt out of Server-Side Rendering on the component level.\n\nJust wrap the `<ClientOnly>` component around the part of template that you want to render client-side only.\n```html\n<ClientOnly fallback-tag=\"p\" fallback=\"Loading ...\">\n  <p>This will get rendered only on the client side.</p>\n</ClientOnly>\n```\n\nThe `fallback-tag` and `fallback` attributes are used as placeholder while the content is being rendered."
+    },
+    {
+      "id": "nuxt-img",
+      "slug": "nuxt-img",
+      "categoryId": "components",
+      "title": "Preload Images",
+      "content": "Use the `preload` attribute on `<NuxtImg>` to load images that you need to display immediately.\n```html\n<template>\n  <NuxtImg\n    preload\n    src='/cat.png'      \n  />\n</template>\n```"
+    },
+    {
+      "id": "csr",
+      "slug": "csr",
+      "categoryId": "config",
+      "title": "Client-Side Rendering",
+      "content": "A Nuxt app can be configured to render entirely on the client side, just like a regular Vue.js app.\n\nYou just need to set it with the `routeRules` option:\n```js\n//nuxt.config.ts\nexport default defineNuxtConfig({\n  routeRules: {\n    '/**': { ssr: false }\n  }\n})\n```"
+    },
+    {
+      "id": "ssg",
+      "slug": "ssg",
+      "categoryId": "config",
+      "title": "Client-Side Rendering",
+      "content": "A Nuxt app can be generated entirely at build time.\n\nYou just need to set it with the `routeRules` option:\n```js\nexport default defineNuxtConfig({\n  routeRules: {\n    '/**': { prerender: true }\n  }\n})\n```\n\nThe app will be able to get served without an app server."
+    },
+    {
+      "id": "regeneration",
+      "slug": "regeneration",
+      "categoryId": "config",
+      "title": "Background Regeneration",
+      "content": "A Nuxt app can be statically regenerated from time to time.\n\nYou can specifiy when you want a page to be regenerated:\n```js\nexport default defineNuxtConfig({\n  routeRules: {\n    '/**': { swr: 60 }\n  }\n})\n```\n\nIn this example, the pages will be regenerated no more than once every 60 seconds."
+    },
+    {
+      "id": "server-route",
+      "slug": "server-route",
+      "categoryId": "server",
+      "title": "Server API Route",
+      "content": "Create an API route with `defineEventHandler`.\n```js\n// server/api/sample-route.js\nexport default defineEventHandler(event => {\n  return {\n    data: 1\n  }\n})\n```\n\nThis route can now be accessed with the path **/api/sample-route**."
+    },
+    {
+      "id": "server-middleware",
+      "slug": "server-middleware",
+      "categoryId": "server",
+      "title": "Server Middleware",
+      "content": "Different from route middleware, server middleware only executes on the server.\n```js\n// server/middleware/sample-middleware.js\nexport default defineEventHandler(event => {\n  // your middleware code\n})\n```\n\nThis middleware will be automatically registered and run."
+    },
+    {
+      "id": "query-content",
+      "slug": "query-content",
+      "categoryId": "nuxt-content",
+      "title": "Querying Nuxt Content",
+      "content": "Instead of using `<ContentDoc>`, you can also query the content you need.\n```js\nconst { data } = await useAsyncData(\n  'posts', \n  () => queryContent('/posts').find()\n)\n```"
+    },
+    {
+      "id": "middleware",
+      "slug": "middleware",
+      "categoryId": "routing",
+      "title": "SSG with Fallback",
+      "content": "A middleware is a special function that gets executed before a route.\n\nYou can create a middleware in the **middleware** folder:\n```js\n// middleware/sample-middleware.js\nexport default defineNuxtRouteMiddleware((to, from) => {\n  // your middleware code\n})\n```\n\nYou can return either `abortNavigation()` or `navigateTo(path)` inside the middleware.\n\nThen in the component, you have to register the middleware:\n\n```js\ndefinePageMeta({\n  middleware: [\n    'sample-middleware'\n  ]\n})\n```"
+    },
+    {
+      "id": "inline-middleware",
+      "slug": "inline-middleware",
+      "categoryId": "routing",
+      "title": "Inline-Middleware",
+      "content": "A middleware can be also be created without an external file.\n\nYou can insert it as a function in the `middleware` array of the page:\n```js\ndefinePageMeta({\n  middleware: [\n    function (to, from) {\n      // your middleware code\n    }\n  ]\n})\n```\n\nMiddlewares will be executed in the same order that they appear in the array."
+    },
+    {
+      "id": "content-doc",
+      "slug": "content-doc",
+      "categoryId": "nuxt-content",
+      "title": "Render a Nuxt Content page",
+      "content": "A Nuxt Content document can be rendered with the `<NuxtContent>` component.\n\nJust use `<NuxtContent>` inside a catch-all route **[...slug].vue**:\n```html\n<template>\n  <div>\n    <NuxtContent />\n  </div>\n</template>\n```"
+    }
+  ],
+  "posts": [
+    {
+      "id": "nuxt-page",
+      "slug": "nuxt-page",
+      "categoryId": "components",
+      "category": {
+        "id": "components",
+        "name": "Components",
+        "slug": "components",
+        "count": 5
+      },
+      "title": "Rendering a Page",
+      "intro": "You can render a Nuxt page by using the `<NuxtPage>` component."
+    },
+    {
+      "id": "nuxt-layout",
+      "slug": "nuxt-layout",
+      "categoryId": "components",
+      "category": {
+        "id": "components",
+        "name": "Components",
+        "slug": "components",
+        "count": 5
+      },
+      "title": "Layout for the App",
+      "intro": "You can set up a layout to be shared between the pages of your app."
+    },
+    {
+      "id": "use-route",
+      "slug": "use-route",
+      "categoryId": "composables",
+      "category": {
+        "id": "composables",
+        "name": "Composables",
+        "slug": "composables",
+        "count": 6
+      },
+      "title": "Getting the Current Path",
+      "intro": "Use `useRoute` to get the path of the current page."
+    },
+    {
+      "id": "use-router",
+      "slug": "use-router",
+      "categoryId": "composables",
+      "category": {
+        "id": "composables",
+        "name": "Composables",
+        "slug": "composables",
+        "count": 6
+      },
+      "title": "Dynamic Page Transition",
+      "intro": "Trigger a page transition dynamically with `useRouter`."
+    },
+    {
+      "id": "use-fetch",
+      "slug": "use-fetch",
+      "categoryId": "composables",
+      "category": {
+        "id": "composables",
+        "name": "Composables",
+        "slug": "composables",
+        "count": 6
+      },
+      "title": "Fetch data with useFetch",
+      "intro": "You can fetch data from the server directly in the component."
+    },
+    {
+      "id": "use-async-data",
+      "slug": "use-async-data",
+      "categoryId": "composables",
+      "category": {
+        "id": "composables",
+        "name": "Composables",
+        "slug": "composables",
+        "count": 6
+      },
+      "title": "Fetch data with custom logic",
+      "intro": "If you have custom fetching logic, you can wrap the logic inside `useAsyncData`."
+    },
+    {
+      "id": "nuxt-link",
+      "slug": "nuxt-link",
+      "categoryId": "components",
+      "category": {
+        "id": "components",
+        "name": "Components",
+        "slug": "components",
+        "count": 5
+      },
+      "title": "The NuxtLink Component",
+      "intro": "Use `<NuxtLink>` to create a link between two pages as in a single-page app."
+    },
+    {
+      "id": "route-validation",
+      "slug": "route-validation",
+      "categoryId": "routing",
+      "category": {
+        "id": "routing",
+        "name": "Routing",
+        "slug": "routing",
+        "count": 4
+      },
+      "title": "Route Validation",
+      "intro": "Validation logic can be registered for a route via `definePageMeta`."
+    },
+    {
+      "id": "route-params",
+      "slug": "route-params",
+      "categoryId": "routing",
+      "category": {
+        "id": "routing",
+        "name": "Routing",
+        "slug": "routing",
+        "count": 4
+      },
+      "title": "Getting Route Params",
+      "intro": "The params of the route can be accessed through the `useRoute` composable."
+    },
+    {
+      "id": "use-state",
+      "slug": "use-state",
+      "categoryId": "composables",
+      "category": {
+        "id": "composables",
+        "name": "Composables",
+        "slug": "composables",
+        "count": 6
+      },
+      "title": "The useState Composable",
+      "intro": "You can init a state on the server side using `useState`."
+    },
+    {
+      "id": "use-head",
+      "slug": "use-head",
+      "categoryId": "composables",
+      "category": {
+        "id": "composables",
+        "name": "Composables",
+        "slug": "composables",
+        "count": 6
+      },
+      "title": "Setting <head> tags of a Page",
+      "intro": "You can set `<title>`, `<meta>`, and `<link>` with the `useHead` composable."
+    },
+    {
+      "id": "client-only",
+      "slug": "client-only",
+      "categoryId": "components",
+      "category": {
+        "id": "components",
+        "name": "Components",
+        "slug": "components",
+        "count": 5
+      },
+      "title": "Render part of the page only on the client",
+      "intro": "You can opt out of Server-Side Rendering on the component level."
+    },
+    {
+      "id": "nuxt-img",
+      "slug": "nuxt-img",
+      "categoryId": "components",
+      "category": {
+        "id": "components",
+        "name": "Components",
+        "slug": "components",
+        "count": 5
+      },
+      "title": "Preload Images",
+      "intro": "Use the `preload` attribute on `<NuxtImg>` to load images that you need to display immediately."
+    },
+    {
+      "id": "csr",
+      "slug": "csr",
+      "categoryId": "config",
+      "category": {
+        "id": "config",
+        "name": "Config",
+        "slug": "config",
+        "count": 3
+      },
+      "title": "Client-Side Rendering",
+      "intro": "A Nuxt app can be configured to render entirely on the client side, just like a regular Vue.js app."
+    },
+    {
+      "id": "ssg",
+      "slug": "ssg",
+      "categoryId": "config",
+      "category": {
+        "id": "config",
+        "name": "Config",
+        "slug": "config",
+        "count": 3
+      },
+      "title": "Client-Side Rendering",
+      "intro": "A Nuxt app can be generated entirely at build time."
+    },
+    {
+      "id": "regeneration",
+      "slug": "regeneration",
+      "categoryId": "config",
+      "category": {
+        "id": "config",
+        "name": "Config",
+        "slug": "config",
+        "count": 3
+      },
+      "title": "Background Regeneration",
+      "intro": "A Nuxt app can be statically regenerated from time to time."
+    },
+    {
+      "id": "server-route",
+      "slug": "server-route",
+      "categoryId": "server",
+      "category": {
+        "id": "server",
+        "name": "Server",
+        "slug": "server",
+        "count": 2
+      },
+      "title": "Server API Route",
+      "intro": "Create an API route with `defineEventHandler`."
+    },
+    {
+      "id": "server-middleware",
+      "slug": "server-middleware",
+      "categoryId": "server",
+      "category": {
+        "id": "server",
+        "name": "Server",
+        "slug": "server",
+        "count": 2
+      },
+      "title": "Server Middleware",
+      "intro": "Different from route middleware, server middleware only executes on the server."
+    },
+    {
+      "id": "query-content",
+      "slug": "query-content",
+      "categoryId": "nuxt-content",
+      "category": {
+        "id": "nuxt-content",
+        "name": "Nuxt Content",
+        "slug": "nuxt-content",
+        "count": 2
+      },
+      "title": "Querying Nuxt Content",
+      "intro": "Instead of using `<ContentDoc>`, you can also query the content you need."
+    },
+    {
+      "id": "middleware",
+      "slug": "middleware",
+      "categoryId": "routing",
+      "category": {
+        "id": "routing",
+        "name": "Routing",
+        "slug": "routing",
+        "count": 4
+      },
+      "title": "SSG with Fallback",
+      "intro": "A middleware is a special function that gets executed before a route."
+    },
+    {
+      "id": "inline-middleware",
+      "slug": "inline-middleware",
+      "categoryId": "routing",
+      "category": {
+        "id": "routing",
+        "name": "Routing",
+        "slug": "routing",
+        "count": 4
+      },
+      "title": "Inline-Middleware",
+      "intro": "A middleware can be also be created without an external file."
+    },
+    {
+      "id": "content-doc",
+      "slug": "content-doc",
+      "categoryId": "nuxt-content",
+      "category": {
+        "id": "nuxt-content",
+        "name": "Nuxt Content",
+        "slug": "nuxt-content",
+        "count": 2
+      },
+      "title": "Render a Nuxt Content page",
+      "intro": "A Nuxt Content document can be rendered with the `<NuxtContent>` component."
+    }
+  ],
+  "categories": [
+    {
+      "id": "components",
+      "slug": "components",
+      "name": "Components",
+      "count": 5
+    },
+    {
+      "id": "composables",
+      "slug": "composables",
+      "name": "Composables",
+      "count": 6
+    },
+    {
+      "id": "routing",
+      "slug": "routing",
+      "name": "Routing",
+      "count": 4
+    },
+    {
+      "id": "config",
+      "slug": "config",
+      "name": "Config",
+      "count": 3
+    },
+    {
+      "id": "server",
+      "slug": "server",
+      "name": "Server",
+      "count": 2
+    },
+    {
+      "id": "nuxt-content",
+      "slug": "nuxt-content",
+      "name": "Nuxt Content",
+      "count": 2
+    }
+  ]
+}
