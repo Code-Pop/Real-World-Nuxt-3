@@ -5,7 +5,7 @@
     </h2>
     <CategoryLink :category="post.category" />
     <RenderMarkdown :source="post.intro" />
-    <a
+    <NuxtLink
       class="more"
       href="#"
       @mouseenter="onMouseHover(true)"

@@ -2,7 +2,7 @@
 import type { PostDetails } from '@/data/posts'
 import { getPostDetailsUrl } from '@/data/posts'
 
-const postSlug = useRoute().params.post.toString()
+const postSlug = useParam('post')
 
 const { data: post } = await useFetch<PostDetails>(
   getPostDetailsUrl(postSlug)
