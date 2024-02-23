@@ -1,14 +1,9 @@
 <template>
-  <div class="layout">
+  <NuxtLayout>
     <NuxtPage />
-  </div>
+  </NuxtLayout>
 </template>
 
 <style lang="scss">
 @use "@/assets/styles/global.scss";
-
-.layout {
-  width: 620px;
-  margin: 50px auto 50px;
-}
 </style>
