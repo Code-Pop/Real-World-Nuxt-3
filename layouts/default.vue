@@ -1,10 +1,18 @@
 <template>
   <div class="layout">
     <nav class="nav">
-      <NuxtLink class="link" to="/">
+      <NuxtLink
+        class="link"
+        :class="{current: $route.path === '/'}"
+        to="/"
+      >
         Home
       </NuxtLink>
-      <NuxtLink class="link" to="/categories">
+      <NuxtLink
+        class="link"
+        :class="{current: $route.path === '/categories'}"
+        to="/categories"
+      >
         Categories
       </NuxtLink>
     </nav>
@@ -35,5 +43,11 @@
 
 .nav .link:hover {
   color: colors.$green-light;
+}
+
+.nav .link.current {
+  color: colors.$green-light;
+  text-decoration: underline;
+  pointer-events: none;
 }
 </style>
