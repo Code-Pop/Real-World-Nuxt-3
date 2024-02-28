@@ -2,6 +2,10 @@
 import type { PostDetails } from '@/data/posts'
 import { getPostDetailsUrl } from '@/data/posts'
 
+definePageMeta({
+  layout: 'breadcrumb'
+})
+
 const postSlug = useParam('post')
 
 const { data: post } = await useFetch<PostDetails>(
