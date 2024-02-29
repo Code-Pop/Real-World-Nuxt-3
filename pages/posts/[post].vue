@@ -11,6 +11,15 @@ const postSlug = useParam('post')
 const { data: post } = await useFetch<PostDetails>(
   getPostDetailsUrl(postSlug)
 )
+
+const categoryState = useCategoryState()
+
+if (post.value) {
+  categoryState.value = {
+    name: post.value.category.name,
+    slug: post.value.category.slug
+  }
+}
 </script>
 
 <template>
