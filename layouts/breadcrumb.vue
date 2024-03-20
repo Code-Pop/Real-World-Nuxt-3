@@ -4,30 +4,30 @@ const categoryState = useCategoryState()
 
 <template>
   <div class="layout">
-    <ClientOnly>
-      <nav class="breadcrumb">
-        <NuxtLink
-          class="link"
-          to="/"
-        >
-          All
-        </NuxtLink>
-        ➤
-        <NuxtLink
-          class="link"
-          to="/categories"
-        >
-          Categories
-        </NuxtLink>
-        ➤
+    <nav class="breadcrumb">
+      <NuxtLink
+        class="link"
+        to="/"
+      >
+        All
+      </NuxtLink>
+      ➤
+      <NuxtLink
+        class="link"
+        to="/categories"
+      >
+        Categories
+      </NuxtLink>
+      ➤
+      <ClientOnly>
         <NuxtLink
           class="link"
           :to="`/categories/${categoryState.slug}`"
         >
           Category: {{ categoryState.name }}
         </NuxtLink>
-      </nav>
-    </ClientOnly>
+      </ClientOnly>
+    </nav>
     <slot />
   </div>
 </template>
