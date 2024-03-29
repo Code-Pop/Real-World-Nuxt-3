@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import type { Post } from '@/data/posts'
 
-const { post } = defineProps<{ post: Post }>()
+const props = defineProps<{ post: Post }>()
+const { post } = toRefs(props)
 
 const isHover = ref(false)
 </script>
 
 <template>
-  <div class="card" :class="{hover: isHover}">
+  <div class="card" :class="{ hover: isHover }">
     <h2 class="title">
       {{ post.title }}
     </h2>
@@ -25,7 +26,7 @@ const isHover = ref(false)
 </template>
 
 <style scoped lang="scss">
-@use "@/assets/styles/colors.scss";
+@use '@/assets/styles/colors.scss';
 
 .card {
   padding: 15px 15px 35px;

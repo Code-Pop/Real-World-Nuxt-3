@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { Category } from '@/data/categories'
 
-const { category } = defineProps<{ category: Category }>()
+const props = defineProps<{ category: Category }>()
+const { category } = toRefs(props)
 </script>
 
 <template>
   <div class="category">
-    <NuxtLink :to="`/categories/${category.slug}`">Category: {{ category.name }}</NuxtLink>
+    <NuxtLink :to="`/categories/${category.slug}`">
+      Category: {{ category.name }}
+    </NuxtLink>
   </div>
 </template>
 
