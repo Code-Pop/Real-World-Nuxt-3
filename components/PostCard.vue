@@ -27,7 +27,7 @@ const onMouseHover = (hover: boolean) => {
 </script>
 
 <style scoped lang="scss">
-@use "@/assets/styles/colors.scss";
+@use "@/assets/styles/colors.scss" as colors;
 
 .card {
   padding: 15px 15px 35px;

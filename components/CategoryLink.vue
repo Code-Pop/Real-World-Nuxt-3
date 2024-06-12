@@ -11,7 +11,7 @@ const { category } = defineProps<{ category: Category }>();
 </script>
 
 <style scoped lang="scss">
-@use "@/assets/styles/colors.scss";
+@use "@/assets/styles/colors.scss" as colors;
 
 .category {
   display: block;
