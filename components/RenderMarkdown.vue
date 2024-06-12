@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import VueMarkdown from 'vue-markdown-render'
-import highlightJs from 'highlight.js/lib/core'
-import javascript from 'highlight.js/lib/languages/javascript'
-import xml from 'highlight.js/lib/languages/xml'
-import 'highlight.js/styles/obsidian.css'
+import VueMarkdown from "vue-markdown-render";
+import highlightJs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import xml from "highlight.js/lib/languages/xml";
+import "highlight.js/styles/obsidian.css";
 
-const { source } = defineProps<{ source: string }>()
+const { source } = defineProps<{ source: string }>();
 
-highlightJs.registerLanguage('javascript', javascript)
-highlightJs.registerLanguage('html', xml)
+highlightJs.registerLanguage("javascript", javascript);
+highlightJs.registerLanguage("html", xml);
 
 const markdownOptions = {
   highlight: function (str: string, lang: string) {
     if (!highlightJs.getLanguage(lang)) {
-      return
+      return;
     }
-    return highlightJs.highlight(str, { language: lang }).value
-  }
-}
+    return highlightJs.highlight(str, { language: lang }).value;
+  },
+};
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const markdownOptions = {
 </template>
 
 <style lang="scss">
-@use '@/assets/styles/colors.scss';
+@use "@/assets/styles/colors.scss";
 
 pre {
   margin: 15px 0px;
