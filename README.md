@@ -1,4 +1,4 @@
-# How to run this app
+This repository is for learning purposes only, it's not for production use.
 
 Install the dependencies:
 
